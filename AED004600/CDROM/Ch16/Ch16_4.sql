@@ -1,0 +1,20 @@
+USE 教務系統
+GO
+CREATE TRIGGER 唯讀資料表
+ON DATABASE 
+FOR DROP_TABLE, ALTER_TABLE AS 
+BEGIN
+  BEGIN TRAN
+  PRINT '資料表綱要是唯讀的!' 
+  ROLLBACK TRAN
+END 
+
+
+
+
+
+
+
+
+
+

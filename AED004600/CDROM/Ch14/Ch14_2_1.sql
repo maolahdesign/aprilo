@@ -1,0 +1,6 @@
+CREATE PROCEDURE 課程資料報表 AS
+BEGIN
+  SELECT 課程編號, 名稱, 學分
+  FROM 課程
+END
+GO

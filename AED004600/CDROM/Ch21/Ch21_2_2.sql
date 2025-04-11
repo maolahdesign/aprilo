@@ -1,0 +1,8 @@
+USE AdventureWorks
+GO
+CREATE FULLTEXT CATALOG 產品文件_全文檢索目錄
+AS DEFAULT
+
+
+
+

@@ -1,0 +1,3 @@
+USE 教務系統 
+GO
+DROP PROCEDURE 課程資料報表

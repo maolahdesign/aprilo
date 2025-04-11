@@ -1,0 +1,8 @@
+USE master
+GO
+CREATE DATABASE SPASchool
+GO
+
+
+
+

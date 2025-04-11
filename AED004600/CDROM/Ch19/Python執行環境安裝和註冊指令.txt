@@ -1,0 +1,23 @@
+Python執行環境3.10版下載和安裝revoscalepy套件的指令，如下所示：
+
+cd "C:\Program Files\Python310\"
+
+python.exe -m pip install https://aka.ms/sqlml/python3.10/windows/revoscalepy-10.0.1-py3-none-any.whl
+
+在SQL Server註冊安裝的Python執行環境，如下所示：
+
+cd "C:\Program Files\Python310\Lib\site-packages\revoscalepy\rxLibs"
+
+.\RegisterRext.exe /configure /pythonhome:"C:\Program Files\Python310" /instance:"MSSQLSERVER"
+
+
+在Python安裝Scikit-learn套件指令，如下所示：
+
+cd "C:\Program Files\Python310\"
+
+python.exe -m pip install scikit-learn
+
+
+
+
+

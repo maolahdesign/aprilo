@@ -1,0 +1,6 @@
+USE master
+GO
+CREATE DATABASE 圖書 
+ON PRIMARY
+( FILENAME = 'D:\Data\圖書.mdf' )
+FOR ATTACH
