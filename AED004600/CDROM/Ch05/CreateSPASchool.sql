@@ -1,8 +1,4 @@
-USE master
-GO
-CREATE DATABASE SPASchool
-GO
+select * from fn_helpcollations();
 
-
-
+ 
 
