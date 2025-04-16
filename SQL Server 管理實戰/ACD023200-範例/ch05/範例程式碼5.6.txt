@@ -1,0 +1,26 @@
+-- 模擬災難：刪除資料庫
+USE master
+GO
+DROP DATABASE Northwind
+
+--接著進行「線上還原」
+--線上還原」模式可以存取已經還原的內容
+RESTORE DATABASE Northwind FILEGROUP='PRIMARY' 
+FROM DISK='C:\temp\NorthwindRW.bak' WITH PARTIAL, RECOVERY;
+
+--還原主要檔案群組後，即可讀寫該資料庫
+SELECT * FROM Northwind.dbo.Customers 
+UPDATE TOP(1) Northwind.dbo.Orders SET Freight+=1 
+
+--但若存取到未還原的部分，會出現錯誤
+SELECT * FROM Northwind.dbo.OrderDetailsHistory
+/*
+訊息 8653，層級 16，狀態 1，行 3
+查詢處理器無法產生資料表或檢視 'OrderDetailsHistory' 的計劃，因為資料表存在於不在線上的檔案群組中。*/
+
+--單獨還原唯讀的檔案群組
+RESTORE DATABASE Northwind FILEGROUP='fgHistory' 
+FROM DISK='C:\temp\NorthwindR.bak' WITH RECOVERY;
+
+--檔案群組還原後，資料表已可存取
+SELECT * FROM Northwind.dbo.OrderDetailsHistory

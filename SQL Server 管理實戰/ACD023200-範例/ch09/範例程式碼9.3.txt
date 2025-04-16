@@ -1,0 +1,11 @@
+:CONNECT SQL2022A 
+SELECT ProductKey,Color FROM [AdventureWorks].[dbo].[DimProduct] WHERE 
+ProductKey = 1 
+GO 
+:CONNECT SQL2022B 
+SELECT ProductKey,Color FROM [AdventureWorks].[dbo].[DimProduct] WHERE 
+ProductKey = 1 
+GO 
+:CONNECT SQL2022C 
+SELECT ProductKey,Color FROM [AdventureWorks].[dbo].[DimProduct] WHERE 
+ProductKey = 1

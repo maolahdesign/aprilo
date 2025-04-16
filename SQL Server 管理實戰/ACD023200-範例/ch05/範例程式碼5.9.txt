@@ -1,0 +1,45 @@
+--設定個別檔案為離線狀態
+ALTER DATABASE Nwind
+MODIFY FILE (name = N'Nwind_A', OFFLINE)
+go
+
+--設定資料庫為線上狀態
+ALTER DATABASE Nwind SET ONLINE
+go
+
+--分析各個資料檔案的屬性：　C:\myAdmin\DB\Nwind_A.ndf為 OFFLINE
+SELECT name, physical_name, state_desc, is_read_only , read_only_lsn
+FROM Nwind.sys.database_files
+ 
+
+--讀取資料表時，僅有tbA 發生錯誤
+SELECT * FROM Nwind.dbo.tbP
+GO
+SELECT * FROM Nwind.dbo.tbA 
+GO
+SELECT * FROM Nwind.dbo.tbB 
+GO
+/*
+(1 個資料列受到影響)
+訊息 8653，層級 16，狀態 1，行 4
+查詢處理器無法產生資料表或檢視 'tbA' 的計劃，因為資料表存在於不在線上的檔案群組中。
+(1 個資料列受到影響)
+*/
+
+INSERT Nwind.dbo.tbP VALUES(2,'P')
+GO
+INSERT Nwind.dbo.tbA VALUES(2,'A') 
+GO
+INSERT Nwind.dbo.tbB VALUES(2,'B')
+GO
+/*
+(1 個資料列受到影響)
+訊息 8653，層級 16，狀態 1，行 3
+查詢處理器無法產生資料表或檢視 'tbA' 的計劃，因為資料表存在於不在線上的檔案群組中。
+(1 個資料列受到影響)
+*/
+
+--在系統發生錯誤後，記得立即備份結尾交易記錄!!!!
+BACKUP LOG Nwind
+TO DISK ='C:\myAdmin\Backup\Nwind.trn'
+WITH NAME = 'LOG_backupset',INIT,NO_TRUNCATE

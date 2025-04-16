@@ -1,0 +1,8 @@
+$AzureSQLServerName = "byrondbserver.database.windows.net"
+$AzureDatabase = "byrondb"
+$Cred = Get-AutomationPSCredential -Name "byron"
+$SQLOutput = $(Invoke-Sqlcmd -ServerInstance $AzureSQLServerName `
+    -Username $Cred.Username -Password $Cred.GetNetworkCredential().Password `
+    -Database $AzureDatabase -Query "select concat(@@SERVERNAME,'/',db_name(),'/',user)" -Verbose) 
+
+Write-Output $SQLOutput

@@ -1,0 +1,14 @@
+CREATE EVENT SESSION 工作階段名稱 
+ON { SERVER | DATABASE }
+{
+   ADD EVENT 事件封裝名稱.事件名稱 
+         [ ( { 
+                 [ SET { 事件的客製化屬性 = <value> [ ,...n] } ]
+                 [ ACTION ( {事件封裝名稱.動作名稱 [ ,...n] } ) ]
+                 [ WHERE <過濾事件述詞> ]
+        } ) ]
+
+    [ADD TARGET 事件封裝名稱.目標名稱
+        [ ( SET { 目標參數名稱 = <value> [ ,...n] } ) ] ]
+    [ WITH ( <工作階段選項> [ ,...n] ) ]
+}

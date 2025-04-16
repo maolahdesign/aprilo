@@ -1,0 +1,13 @@
+--毀掉資料:停止SQL Server服務後，刪除C:\myAdmin\DB\Nwind_A.ndf，再啟動SQL Server：
+--使用SQLCMD 模式，標記以下三句話後一起執行
+--執行完畢後要重新連接SQL Server
+!!net stop mssqlserver /Y
+!!Del C:\myAdmin\DB\Nwind_A.ndf
+!!net start mssqlserver /Y
+
+-- 檢查SQL Server 記錄檔，會得到錯誤訊息如下
+SELECT * FROM Nwind.dbo.tbP
+/*
+訊息 945，層級 14，狀態 2，行 1
+檔案無法存取、記憶體或磁碟空間不足，因此無法開啟資料庫 'Nwind'。詳細資訊請參閱 SQL Server 錯誤記錄檔。
+*/

@@ -1,0 +1,31 @@
+USE MyDB
+GO
+
+CREATE TABLE tb(
+ID INT PRIMARY KEY,
+String NVARCHAR(100))
+GO
+
+--定義預存程序使用資料表型態，必須為唯讀
+CREATE PROCEDURE spSelectFromTVP(
+	@TVParam tpMyTbl READONLY)
+AS
+	SET NOCOUNT ON
+	INSERT tb SELECT * FROM @TVParam
+GO
+
+--宣告自訂資料表類型的變數並新增記錄
+DECLARE @TVP AS tpMyTbl
+INSERT INTO @TVP(ID, String) VALUES (1, 'Bill'),(2, 'William')
+
+--呼叫預存程序時，直接賦予自訂資料表類型變數
+EXEC spSelectFromTVP @TVP
+
+--驗證資料
+SELECT * FROM tb
+GO
+
+--清除建立的物件
+DROP PROC spSelectFromTVP
+DROP TABLE tb
+DROP TYPE tpMyTbl

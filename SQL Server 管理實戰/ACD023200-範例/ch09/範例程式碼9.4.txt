@@ -1,0 +1,15 @@
+:CONNECT SQL2022A 
+UPDATE [AdventureWorks].[dbo].[DimProduct] SET Color = 'Black' WHERE ProductKey = 1 
+SELECT ProductKey,Color FROM [AdventureWorks].[dbo].[DimProduct] WHERE 
+ProductKey = 1 
+GO 
+:CONNECT SQL2022B 
+UPDATE [AdventureWorks].[dbo].[DimProduct] SET Color = 'Red' WHERE ProductKey = 1 
+SELECT ProductKey,Color FROM [AdventureWorks].[dbo].[DimProduct] WHERE 
+ProductKey = 1 
+GO 
+:CONNECT SQL2022C 
+UPDATE [AdventureWorks].[dbo].[DimProduct] SET Color = 'Blue' WHERE ProductKey = 1 
+SELECT ProductKey,Color FROM [AdventureWorks].[dbo].[DimProduct] WHERE 
+ProductKey = 1 
+GO

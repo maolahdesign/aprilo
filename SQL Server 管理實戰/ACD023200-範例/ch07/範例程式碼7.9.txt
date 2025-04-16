@@ -1,0 +1,12 @@
+SELECT 
+    n.value('../@name[1]', 'varchar(50)') as PackageName,
+    n.value('@name[1]', 'varchar(50)') as EventName,
+    n.value('@count[1]', 'int') as Occurence
+FROM
+(
+SELECT CAST(target_data AS XML) as target_data
+FROM sys.dm_xe_sessions AS s 
+JOIN sys.dm_xe_session_targets AS t ON t.event_session_address = s.address
+WHERE s.name = 'Trace_QueryStatus'  AND t.target_name = 'event_counter'
+) as tab
+CROSS APPLY target_data.nodes('CounterTarget/Packages/Package/Event') as q(n)

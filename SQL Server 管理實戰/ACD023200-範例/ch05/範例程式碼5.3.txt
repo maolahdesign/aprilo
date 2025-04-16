@@ -1,0 +1,28 @@
+USE [master]
+GO
+
+-- 備份結尾記錄
+BACKUP LOG nwind TO DISK='C:\myAdmin\Backup\NwindTail.trn' WITH INIT,NO_TRUNCATE
+
+-- 復原檔案
+RESTORE DATABASE nwind FILE='Nwind_A' FROM DISK=N'C:\myAdmin\Backup\NwindA.bak'
+WITH NORECOVERY
+
+-- 復原Log
+RESTORE LOG Nwind FROM DISK=N'C:\myAdmin\Backup\Nwind2.trn' WITH NORECOVERY
+
+-- 還原結尾記錄，讓各資料庫檔完成一致
+RESTORE LOG Nwind FROM DISK='C:\myAdmin\Backup\NwindTail.trn' WITH RECOVERY
+
+--資料庫檔案還原後，已可查詢資料表
+SELECT * FROM Nwind.dbo.tbP
+
+/*
+c1          c2
+----------- ----------
+1           P1
+2           P2
+3           P3
+
+(3 個資料列受到影響)
+*/

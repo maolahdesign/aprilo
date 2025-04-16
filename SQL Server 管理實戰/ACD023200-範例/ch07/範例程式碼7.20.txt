@@ -1,0 +1,13 @@
+select w.wait_stats_id
+,w.plan_id
+,w.runtime_stats_interval_id
+,w.wait_category
+,w.wait_category_desc
+,w.execution_type
+,w.execution_type_desc
+,w.avg_query_wait_time_ms
+,w.min_query_wait_time_ms
+,w.max_query_wait_time_ms
+from sys.query_store_wait_stats w
+inner join sys.query_store_plan p
+on w.plan_id=p.plan_id

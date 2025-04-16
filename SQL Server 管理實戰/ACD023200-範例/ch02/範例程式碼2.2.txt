@@ -1,0 +1,26 @@
+# "SQL2022"為電腦名稱    
+CD SQLSERVER:\SQL\SQL2022
+$Wmi = (get-item .).ManagedComputer  
+
+#取得 Database Engine 預設執行個體的參考
+#$DfltInstance = $Wmi.Services['MSSQLSERVER'] 
+ 
+#取得 Database Engine 具名執行個體的參考
+$DfltInstance = $Wmi.Services['MSSQL$MSSQLSERVER01']  
+
+#取得 Database Engine預設執行個體的參考
+#$DfltInstance = $Wmi.Services['MSSQL$instancename'] 
+
+#停止 Database Engine 服務
+$DfltInstance.Stop();
+
+#啟動 Database Engine 服務
+$DfltInstance.Start(); 
+
+#顯示 Database Engine 服務狀態
+$DfltInstance
+
+#取得具名執行個體的 Agent 服務
+$DfltInstance = $Wmi.Services['MSSQL$MSSQLSERVER01']  
+#啟動具名執行個體的 Agent 服務
+$DfltInstance.Start(); 

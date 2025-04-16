@@ -1,0 +1,1 @@
+UPDATE [AdventureWorks].[dbo].[DimPromotion] SET DiscountPct = 0.02 WHERE PromotionKey = 2

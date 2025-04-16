@@ -1,0 +1,11 @@
+SELECT c.query('.') xmlData,
+c.value('(./@name)[1]','varchar(50)') name,
+c.value('(./@id)[1]','varchar(50)') id,
+c.value('(./@timestamp)[1]','datetime') timestamp,
+c.value('(./data/value)[1]','varchar(50)') value
+FROM 
+	(SELECT CAST(target_data as XML) errEvent
+	 FROM sys.dm_xe_session_targets dxst
+		JOIN sys.dm_xe_sessions dxe ON dxst.event_session_address=dxe.address 
+	) t cross apply
+errEvent.nodes('//event[@name="xml_deadlock_report"]') n(c)

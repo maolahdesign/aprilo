@@ -1,0 +1,7 @@
+SELECT q.query_id, qt.query_text_id,p.plan_id, qt.query_sql_text,avg(rs.avg_cpu_time) AS avg_cpu_time,SUM(rs.count_executions) AS total_execution_count
+FROM sys.query_store_query_text qt 
+JOIN sys.query_store_query q ON qt.query_text_id = q.query_text_id 
+JOIN sys.query_store_plan p ON q.query_id = p.query_id 
+JOIN sys.query_store_runtime_stats rs ON p.plan_id = rs.plan_id
+group by q.query_id, qt.query_text_id,p.plan_id, qt.query_sql_text
+order by query_id,plan_id,avg_cpu_time

@@ -1,0 +1,12 @@
+---- 啟動 SQL Server 預設執行個體
+net start MSSQLSERVER
+
+---- 停止 SQL Server 預設執行個體
+net stop MSSQLSERVER
+
+---- 啟動 SQL Server 具名執行個體
+net start MSSQL$具名執行個體名稱
+
+---- 停止 SQL Server 具名執行個體
+net stop MSSQL$具名執行個體名稱
+

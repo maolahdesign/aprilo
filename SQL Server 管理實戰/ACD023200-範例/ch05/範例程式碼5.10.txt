@@ -1,0 +1,32 @@
+--復原個別資料庫檔案
+RESTORE DATABASE Nwind FILE = N'Nwind_A'
+FROM DISK ='C:\myAdmin\Backup\Nwind.bak'
+WITH RECOVERY
+/*
+已處理資料庫 'Nwind' 的 16 頁，檔案 1 上的檔案 'Nwind_A'。
+向前復原目前的起始點位於記錄序號 (LSN) 39000000051200001。必須有超過 LSN 39000000111200001 的其它向前復原，才能完成還原順序。
+RESTORE DATABASE ... FILE=<name> 已於 0.150 秒內成功處理了 16 頁 (0.833 MB/sec)。
+
+*/
+
+--檢視資料檔案的屬性：C:\myAdmin\DB\Nwind_A.ndf為 RESTORING
+SELECT name, physical_name, state_desc, is_read_only , read_only_lsn
+FROM Nwind.sys.database_files
+ 
+
+--復原結尾交易記錄，讓復原的資料和其它既有資料變得一致
+RESTORE LOG Nwind
+FROM DISK ='C:\myAdmin\Backup\Nwind.trn'
+WITH RECOVERY
+
+--再次檢視各個資料檔案的屬性：C:\myAdmin\DB\Nwind_A.ndf為 ONLINE
+SELECT name, physical_name, state_desc, is_read_only , read_only_lsn
+FROM Nwind.sys.database_files
+ 
+
+--之後可SELECT出來所有的資料表內容
+SELECT * FROM Nwind.dbo.tbP
+     	UNION ALL
+SELECT * FROM Nwind.dbo.tbA
+     	UNION ALL
+SELECT * FROM Nwind.dbo.tbB

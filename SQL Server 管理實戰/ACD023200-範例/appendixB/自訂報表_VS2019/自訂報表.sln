@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30107.140
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "自訂報表", "自訂報表\自訂報表.rptproj", "{B27C7707-7FE8-4F2D-BC74-034229C32309}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Default = Debug|Default
+		DebugLocal|Default = DebugLocal|Default
+		Release|Default = Release|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B27C7707-7FE8-4F2D-BC74-034229C32309}.Debug|Default.ActiveCfg = Debug
+		{B27C7707-7FE8-4F2D-BC74-034229C32309}.Debug|Default.Build.0 = Debug
+		{B27C7707-7FE8-4F2D-BC74-034229C32309}.Debug|Default.Deploy.0 = Debug
+		{B27C7707-7FE8-4F2D-BC74-034229C32309}.DebugLocal|Default.ActiveCfg = DebugLocal
+		{B27C7707-7FE8-4F2D-BC74-034229C32309}.DebugLocal|Default.Build.0 = DebugLocal
+		{B27C7707-7FE8-4F2D-BC74-034229C32309}.Release|Default.ActiveCfg = Release
+		{B27C7707-7FE8-4F2D-BC74-034229C32309}.Release|Default.Build.0 = Release
+		{B27C7707-7FE8-4F2D-BC74-034229C32309}.Release|Default.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ABEA1E4B-6C11-4896-A293-F6D2D43FDE6F}
+	EndGlobalSection
+EndGlobal

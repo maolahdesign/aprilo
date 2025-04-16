@@ -1,0 +1,16 @@
+SELECT 
+d.value( '(/event[@name=''sql_statement_completed'']/@timestamp)[1]','DATETIME') AS  [TIME] ,
+d.value( '(/event/data[@name=''cpu_time'']/value)[1]','INT') AS [CPU(ms)],
+CONVERT(FLOAT,d.value('(/event/data[@name=''duration'']/value)[1]','BIGINT'))/1000 AS [Duration(s)],
+d.value( '(/event/data[@name=''logical_reads'']/value)[1]','INT') AS logical_reads,
+d.value( '(/event/data[@name=''physical_reads'']/value)[1]','INT') AS physical_reads,
+d.value( '(/event/data[@name=''writes'']/value)[1]','INT') AS writes,
+d.value('(/event/data[@name=''statement'']/value)[1]','varchar(max)') AS statement,
+d.value('(/event/action[@name=''database_name'']/value)[1]','varchar(max)') AS [DBNAME],
+d.value('(/event/action[@name=''username'']/value)[1]','varchar(max)') AS [username],
+d.value('(/event/action[@name=''client_app_name'']/value)[1]','varchar(max)') AS [client_app]
+FROM 
+ (SELECT  CONVERT(XML,EVENT_DATA)  AS d 
+  FROM  sys.fn_xe_file_target_read_file ('C:\TEMP\Trace_QueryStatus*.xel', NULL, NULL, NULL)
+ )A
+ WHERE CONVERT(FLOAT,d.value('(/event/data[@name=''duration'']/value)[1]','BIGINT'))/1000 >0

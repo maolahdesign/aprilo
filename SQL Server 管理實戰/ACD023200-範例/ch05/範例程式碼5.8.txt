@@ -1,0 +1,23 @@
+--備份完整資料庫
+BACKUP DATABASE Nwind TO DISK=N'C:\myAdmin\Backup\Nwind.bak' WITH INIT
+
+--新增資料
+INSERT Nwind.dbo.tbP VALUES(1,'P')
+INSERT Nwind.dbo.tbA VALUES(1,'A')
+INSERT Nwind.dbo.tbB VALUES(1,'B')
+
+--在Management Studio切換至SqlCmd模式，刪除資料檔（選取三行語法一起執行）
+--若權限不足，請以管理者身分利用Windows作業系統的工具程式執行
+!!net stop mssqlserver /Y
+!!Del C:\myAdmin\DB\Nwind_A.ndf
+!!net start mssqlserver /Y
+
+--重新啟動SQL服務後，再次查詢資料時會發生以下的錯誤
+SELECT * FROM Nwind.dbo.tbP
+/*
+訊息 945，層級 14，狀態 2，行 15
+檔案無法存取、記憶體或磁碟空間不足，因此無法開啟資料庫 'Nwind'。詳細資訊請參閱 SQL Server 錯誤記錄檔。
+*/
+
+--檢查資料庫的狀態：Nwind 為RECOVERY_PENDING 狀態
+SELECT name, state_desc FROM sys.databases

@@ -1,0 +1,7 @@
+--搭配READ_WRITE_FILEGROUPS，僅備份可讀寫的檔案群組
+BACKUP DATABASE Northwind READ_WRITE_FILEGROUPS TO DISK='C:\temp\NorthwindRW.bak'
+RESTORE FILELISTONLY FROM DISK='C:\temp\NorthwindRW.bak'
+
+--備份唯讀檔案群組
+BACKUP DATABASE Northwind FILEGROUP='fgHistory' TO DISK='C:\temp\NorthwindR.bak'
+RESTORE FILELISTONLY FROM DISK='C:\temp\NorthwindR.bak'

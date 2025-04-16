@@ -1,0 +1,18 @@
+SELECT
+event.value('(event/@name)[1]', 'varchar(50)') AS event_name,
+event.value( '(/event/data[@name="cpu_time"]/value)[1]','INT') AS [CPU(ms)],
+CONVERT(FLOAT,event.value('(/event/data[@name="duration"]/value)[1]','BIGINT'))/1000 AS [Duration(s)],
+event.value('(event/data[@name="logical_reads"]/value)[1]', 'int') AS logical_reads,
+event.value('(event/data[@name="writes"]/value)[1]','int') AS writes,
+event.value('(/event/action[@name="database_name"]/value)[1]','varchar(max)') AS DBName,
+event.value('(/event/action[@name="client_app_name"]/value)[1]','varchar(max)') AS clientApp,
+event.value('(event/data[@name="statement"]/value)[1]', 'nvarchar(max)') AS statement
+FROM(SELECT evnt.query('.') AS event
+      FROM
+        ( SELECT CAST(target_data AS xml) AS TargetData
+          FROM sys.dm_xe_sessions AS s
+			JOIN sys.dm_xe_session_targets AS t ON s.address = t.event_session_address
+          WHERE s.name = 'Trace_QueryStatus' AND t.target_name = 'ring_buffer'
+       ) AS tab
+      CROSS APPLY TargetData.nodes ('RingBufferTarget/event') AS split(evnt) 
+     ) AS evts(event)

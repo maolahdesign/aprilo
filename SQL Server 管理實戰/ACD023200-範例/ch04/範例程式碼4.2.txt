@@ -1,0 +1,13 @@
+CREATE DATABASE SampleDB2
+ON
+( NAME = N'SampleDB2_data',
+  FILENAME = 'C:\Test\Samples\SampleDB2.mdf',
+  SIZE = 500,
+  MAXSIZE = 800,
+  FILEGROWTH = 10 )
+LOG ON
+( NAME = N'SampleDB2_log',
+  FILENAME = 'C:\Test\Samples\SampleDB2_log.ldf',
+  SIZE = 100,
+  MAXSIZE = 200,
+  FILEGROWTH = 10 )

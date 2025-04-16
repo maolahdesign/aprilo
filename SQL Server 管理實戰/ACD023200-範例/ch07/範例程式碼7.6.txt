@@ -1,0 +1,24 @@
+-- Event objects
+SELECT p.name AS package_name,o.name AS event_name,o.description
+FROM sys.dm_xe_packages AS p
+	JOIN sys.dm_xe_objects AS o ON p.guid = o.package_guid
+WHERE o.object_type = 'event' 
+	AND (p.capabilities IS NULL OR p.capabilities & 1 = 0)  
+	AND (o.capabilities IS NULL OR o.capabilities & 1 = 0)  
+
+
+-- Actions
+SELECT p.name AS package_name,o.name AS event_name,o.description
+FROM sys.dm_xe_packages AS p
+	JOIN sys.dm_xe_objects AS o ON p.guid = o.package_guid
+WHERE o.object_type = 'action'
+	AND (p.capabilities IS NULL OR p.capabilities & 1 = 0)  
+	AND (o.capabilities IS NULL OR o.capabilities & 1 = 0)  
+
+-- Target
+SELECT p.name AS package_name,o.name AS event_name,o.description
+FROM sys.dm_xe_packages AS p
+	JOIN sys.dm_xe_objects AS o ON p.guid = o.package_guid
+WHERE o.object_type = 'target'
+	AND (p.capabilities IS NULL OR p.capabilities & 1 = 0)  
+	AND (o.capabilities IS NULL OR o.capabilities & 1 = 0)  

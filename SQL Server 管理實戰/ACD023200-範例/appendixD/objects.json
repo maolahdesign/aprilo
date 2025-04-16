@@ -1,0 +1,22 @@
+{
+    "Servers": [
+      {
+        "ServerName": "SQL2022",
+        "Databases":[
+        {
+          "DatabaseName": "dbDemo",
+          "Tables": 
+          [
+            { "TableName": "tbTest" }
+          ]
+        },
+        {
+          "DatabaseName": "Northwind",
+          "Tables": 
+          [
+            { "TableName": "dbo.Customers" }
+          ]
+        } ]
+      }
+    ]
+}

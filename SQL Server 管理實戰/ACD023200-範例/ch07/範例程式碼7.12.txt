@@ -1,0 +1,21 @@
+SELECT 
+    n.value('(event/@name)[1]', 'varchar(50)') AS event_name,
+    n.value('(event/@package)[1]', 'varchar(50)') AS package_name,
+    DATEADD(hh, 
+            DATEDIFF(hh, GETUTCDATE(), CURRENT_TIMESTAMP), 
+            n.value('(event/@timestamp)[1]', 'datetime2')) AS [timestamp],
+	n.value('(/event/action[@name=''database_name'']/value)[1]','varchar(max)') AS [DBNAME],
+    n.value('(event/data[@name="state"]/text)[1]', 'varchar(50)') as [state],
+	n.value('(event/data[@name="offset"]/value)[1]', 'int') as [offset],
+    n.value('(event/data[@name="statement"]/value)[1]', 'varchar(max)') as [statement],
+    n.value('(event/data[@name="offset_end"]/value)[1]', 'int') as [offset_end],
+    n.value('(event/action[@name="session_id"]/value)[1]', 'int') as session_id 
+FROM(SELECT evnt.query('.') AS n
+     FROM
+       ( SELECT CAST(target_data AS xml) AS TargetData
+         FROM sys.dm_xe_sessions AS s
+			JOIN sys.dm_xe_session_targets AS t ON s.address = t.event_session_address
+         --WHERE s.name = ' Trace_pair' AND t.target_name = 'pair_matching'
+       ) AS tab
+		CROSS APPLY TargetData.nodes ('PairingTarget/event') AS split(evnt) 
+    ) AS evts(n)

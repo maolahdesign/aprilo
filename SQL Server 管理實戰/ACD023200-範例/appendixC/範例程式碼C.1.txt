@@ -1,0 +1,7 @@
+USE Northwind
+GO
+
+-- 建立不符合「原則」的「條件」規範之使用者自定預存程序，其前置詞為sp_
+CREATE PROCEDURE sp_EmployeeName
+AS
+SELECT LastName,FirstName FROM dbo.Employees
