@@ -4,7 +4,7 @@
 
 請注意，ER建模的實踐者幾乎總是將「實體類型」簡稱為「實體」。例如，`CUSTOMER`（客戶）實體類型通常被簡稱為`CUSTOMER`實體。這種做法非常普遍，以至於不建議使用其他稱呼，但從技術上講，一個實體是實體類型的抽象實例，而這正是ER圖所顯示的 - 抽象實例及其之間的關係。這就是為什麼實體總是使用單數名詞命名的原因。
 
-Mermaid可以繪製ER圖
+Mermaid 可以繪製ER圖
 
 ```mermaid-example
 ---
@@ -16,13 +16,13 @@ erDiagram
     CUSTOMER }|..|{ DELIVERY-ADDRESS : uses
 ```
 
-實體名稱通常使用大寫，儘管這方面沒有公認的標準，而且在Mermaid中也不是必需的。
+實體名稱通常使用大寫，儘管這方面沒有公認的標準，而且在 Mermaid 中也不是必需的。
 
-實體之間的關係由帶有表示基數的末端標記的線條表示。Mermaid使用最流行的鴉足（crow's foot）符號。鴉足直觀地傳達了它所連接的實體可能有多個實例的可能性。
+實體之間的關係由帶有表示基數的末端標記的線條表示。 Mermaid 使用最流行的鴉足（crow's foot）符號。鴉足直觀地傳達了它所連接的實體可能有多個實例的可能性。
 
-ER圖可用於各種目的，從不含任何實現細節的抽象邏輯模型，到關係型資料庫表的物理模型。在ER圖中包含屬性定義有助於理解實體的目的和含義。這些定義不一定需要詳盡；通常一小部分屬性就足夠了。Mermaid允許按照屬性的類型和名稱來定義它們。
+ER 圖可用於各種目的，從不含任何實現細節的抽象邏輯模型，到關係型資料庫表的物理模型。在 ER 圖中包含屬性定義有助於理解實體的目的和含義。這些定義不一定需要詳盡；通常一小部分屬性就足夠了。 Mermaid 允許按照屬性的類型和名稱來定義它們。
 
-```mermaid-example
+``` mermaid -example
 erDiagram
     CUSTOMER ||--o{ ORDER : places
     CUSTOMER {
@@ -48,7 +48,7 @@ erDiagram
 
 ### 實體和關係
 
-Mermaid的ER圖語法與PlantUML兼容，並擴展了關係標籤。每個語句由以下部分組成：
+ Mermaid 的ER圖語法與PlantUML兼容，並擴展了關係標籤。每個語句由以下部分組成：
 
 ```
     <first-entity> [<relationship> <second-entity> : <relationship-label>]
@@ -75,7 +75,7 @@ Mermaid的ER圖語法與PlantUML兼容，並擴展了關係標籤。每個語句
 
 實體名稱、關係和屬性都支援Unicode文字。
 
-```mermaid-example
+``` mermaid -example
 erDiagram
     "This ❤ Unicode"
 ```
@@ -84,7 +84,7 @@ erDiagram
 
 也支援Markdown格式和文字。
 
-```mermaid-example
+``` mermaid -example
 erDiagram
     "This **is** _Markdown_"
 ```
@@ -125,7 +125,7 @@ erDiagram
 
 ### 識別關係
 
-關係可以分為識別關係或非識別關係，它們分別用實線或虛線表示。當一個實體沒有另一個實體就無法獨立存在時，這一點很重要。例如，一家為人們提供汽車駕駛保險的公司可能需要存儲`NAMED-DRIVER`（指定駕駛員）的資料。在建模時，我們可能首先觀察到一輛`CAR`（汽車）可以由多個`PERSON`（人）實例駕駛，而一個`PERSON`可以駕駛多輛`CAR` - 這兩個實體都可以在沒有對方的情況下存在，因此這是一種非識別關係，我們可能在Mermaid中指定為：`PERSON }|..|{ CAR : "driver"`。請注意關係中間的兩個點，它們將導致在兩個實體之間繪製虛線。但是當這種多對多關係被解析為兩個一對多關係時，我們觀察到一個`NAMED-DRIVER`如果沒有`PERSON`和`CAR`就不能存在 - 關係變成識別關係，並使用連字符指定，這會轉換為實線：
+關係可以分為識別關係或非識別關係，它們分別用實線或虛線表示。當一個實體沒有另一個實體就無法獨立存在時，這一點很重要。例如，一家為人們提供汽車駕駛保險的公司可能需要存儲`NAMED-DRIVER`（指定駕駛員）的資料。在建模時，我們可能首先觀察到一輛`CAR`（汽車）可以由多個`PERSON`（人）實例駕駛，而一個`PERSON`可以駕駛多輛`CAR` - 這兩個實體都可以在沒有對方的情況下存在，因此這是一種非識別關係，我們可能在 Mermaid 中指定為：`PERSON }|..|{ CAR : "driver"`。請注意關係中間的兩個點，它們將導致在兩個實體之間繪製虛線。但是當這種多對多關係被解析為兩個一對多關係時，我們觀察到一個`NAMED-DRIVER`如果沒有`PERSON`和`CAR`就不能存在 - 關係變成識別關係，並使用連字符指定，這會轉換為實線：
 
 | 值  |      別名於       |
 | :--: | :---------------: |
@@ -139,13 +139,13 @@ erDiagram
 |      to       |     _識別關係_     |
 | optionally to |    _非識別關係_    |
 
-```mermaid-example
+``` mermaid -example
 erDiagram
     CAR ||--o{ NAMED-DRIVER : allows
     PERSON }o..o{ NAMED-DRIVER : is
 ```
 
-```mermaid-example
+``` mermaid -example
 erDiagram
     CAR 1 to zero or more NAMED-DRIVER : allows
     PERSON many(0) optionally to 0+ NAMED-DRIVER : is
@@ -155,7 +155,7 @@ erDiagram
 
 可以為實體定義屬性，方法是指定實體名稱，然後用一個包含多個`type name`對的區塊，其中區塊由開始的`{`和結束的`}`界定。屬性在實體框內渲染。例如：
 
-```mermaid-example
+``` mermaid -example
 erDiagram
     CAR ||--o{ NAMED-DRIVER : allows
     CAR {
@@ -177,7 +177,7 @@ erDiagram
 
 可以使用方括號為實體添加別名。如果提供了別名，圖表中將顯示別名而不是實體名稱。別名名稱遵循與實體名稱相同的所有規則。
 
-```mermaid-example
+``` mermaid -example
 erDiagram
     p[Person] {
         string firstName
@@ -193,7 +193,7 @@ erDiagram
 
 屬性還可以定義`key`或註釋。鍵可以是`PK`、`FK`或`UK`，分別表示主鍵、外鍵或唯一鍵（鍵不支持Markdown格式和Unicode）。要在單個屬性上指定多個鍵約束，請用逗號分隔（例如，`PK, FK`）。`comment`由屬性末尾的雙引號定義。註釋本身不能包含雙引號字符。
 
-```mermaid-example
+``` mermaid -example
 erDiagram
     CAR ||--o{ NAMED-DRIVER : allows
     CAR {
@@ -223,7 +223,7 @@ direction語句聲明圖表的方向。
 
 這宣告了圖表是從上到下（`TB`）定向的。這可以反轉為從下到上（`BT`）定向。
 
-```mermaid-example
+``` mermaid -example
 erDiagram
     direction TB
     CUSTOMER ||--o{ ORDER : places
@@ -246,7 +246,7 @@ erDiagram
 
 這宣告了圖表是從左到右（`LR`）定向的。這可以反轉為從右到左（`RL`）定向。
 
-```mermaid-example
+``` mermaid -example
 erDiagram
     direction LR
     CUSTOMER ||--o{ ORDER : places
@@ -278,7 +278,7 @@ erDiagram
 
 可以對節點應用特定樣式，如更粗的邊框或不同的背景顏色。
 
-```mermaid-example
+``` mermaid -example
 erDiagram
     id1||--||id2 : label
     style id1 fill:#f9f,stroke:#333,stroke-width:4px
@@ -327,7 +327,7 @@ erDiagram
 
 添加類別的更簡短的形式是使用`:::`操作符將類別名稱附加到節點，如下所示：
 
-```mermaid-example
+``` mermaid -example
 erDiagram
     direction TB
     CAR:::someclass {
@@ -347,7 +347,7 @@ erDiagram
 
 這種形式可以在聲明實體之間的關係時使用：
 
-```mermaid-example
+``` mermaid -example
 erDiagram
     CAR {
         string registrationNumber
@@ -383,7 +383,7 @@ erDiagram
 
 > **注意：** 來自style或其他類別語句的自定義樣式優先，並會覆蓋默認樣式。（例如，`default`類別給節點一個粉紅色的背景，但如果應用了`blue`類別，該節點將具有藍色背景。）
 
-```mermaid-example
+``` mermaid -example
 erDiagram
     CAR {
         string registrationNumber

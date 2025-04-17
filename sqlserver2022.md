@@ -8,6 +8,57 @@ erDiagram
     Customers ||--o{ Orders : places
     Employees ||--o{ Orders : processes
     Orders ||--o{ OrderDetails : contains
+    
+    Categories {
+        int category_id PK
+        nvarchar category_name
+        nvarchar description
+    }
+    
+    Products {
+        int product_id PK
+        nvarchar product_name
+        int category_id FK
+        decimal price
+        int stock
+        nvarchar description
+        datetime created_at
+    }
+    
+    Customers {
+        int customer_id PK
+        nvarchar name
+        nvarchar email
+        nvarchar phone
+        nvarchar address
+        datetime created_at
+    }
+    
+    Employees {
+        int employee_id PK
+        nvarchar name
+        nvarchar email
+        nvarchar phone
+        datetime hire_date
+    }
+    
+    Orders {
+        int order_id PK
+        int customer_id FK
+        int employee_id FK
+        datetime order_date
+        decimal total_amount
+        nvarchar status
+    }
+    
+    OrderDetails {
+        int order_detail_id PK
+        int order_id FK
+        int product_id FK
+        int quantity
+        decimal unit_price
+        decimal subtotal
+    }
 
 ```
 
