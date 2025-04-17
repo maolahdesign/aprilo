@@ -1,7 +1,15 @@
 # 建立一家小型3C零售公司設計銷售資料庫系統。
 
 ## 1. 銷售資料庫ER模型設計
+```mermaid
+erDiagram
+    Categories ||--o{ Products : contains
+    Products ||--o{ OrderDetails : "included in"
+    Customers ||--o{ Orders : places
+    Employees ||--o{ Orders : processes
+    Orders ||--o{ OrderDetails : contains
 
+```
 
 
 ## 2. SQL Server 2022 資料表建立語法
