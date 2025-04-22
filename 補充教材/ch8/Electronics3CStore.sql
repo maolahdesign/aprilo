@@ -184,3 +184,40 @@ VALUES
 -- 訂單10
 (10, 16, 1, 19900.00);
 
+-- 平均一天賣 4 支 iPhone 14 幾天後會缺貨
+SELECT stock/4 as 第幾天 FROM products where product_id=5
+
+-- 庫存清單依格式呈現結果:ASUS VivoBook 15還有15個庫存
+SELECT (product_name+'還有'+CAST(stock AS VARCHAR(10))+'個庫存') AS 庫存清單 FROM products;
+
+-- 列出全部庫存產品(產品名稱，庫存年)
+SELECT product_name as 產品名稱, DATEDIFF(yy,created_at,GETDATE()) as 庫存年 FROM products;
+
+-- 列出所有的產品價格，排除重複的
+SELECT distinct price FROM products
+
+-- 列出前三名最貴的產品
+SELECT top 3 * FROM products order by price desc
+
+-- 列出庫存時間一年以上的產品(產品名稱，庫存年)
+SELECT product_name as 產品名稱, DATEDIFF(yy,created_at,GETDATE()) as 庫存年 
+FROM products 
+where DATEDIFF(yy,created_at,GETDATE())>=1;
+
+-- 列出庫存時間 2024 年以前及以後的產品(產品名稱，庫存年 ex 2023)
+SELECT product_name as 產品名稱,  YEAR(created_at) as  庫存年  
+FROM products 
+where DATEDIFF(yy,created_at,GETDATE())!=1 ;
+
+-- 列出庫存時間 2024 年以前及以後的產品(產品名稱，庫存年 ex 2023，使用邏輯運算子)
+-- 列出庫存時間 2024 年以前即以後的產品(產品名稱，庫存年 ex 2023，使用邏輯運算子 not)
+SELECT product_name as 產品名稱,  YEAR(created_at) as  庫存年  FROM products where not YEAR(created_at) = '2024';
+
+-- 查詢所有產品名稱以 a 開頭的產品(產品名稱)
+SELECT * FROM products where product_name like 'a%';
+
+-- 查詢所有產品名稱第三個字是 e 的產品(產品名稱)
+SELECT * FROM products where product_name like '__e%';
+
+-- 筆電有哪些選擇?不要14吋的
+SELECT * FROM products where category_id = 1 and product_name like '%[^4]'
