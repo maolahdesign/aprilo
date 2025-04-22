@@ -68,6 +68,15 @@ CREATE TABLE OrderDetails (
     CONSTRAINT FK_OrderDetails_Products FOREIGN KEY (product_id) REFERENCES Products(product_id)
 );
 
+-- 創建產品品牌
+CREATE TABLE Brands (
+    boand_id INT PRIMARY KEY IDENTITY(1,1),
+    boand_name NVARCHAR(100) NOT NULL
+);
+
+INSERT INTO Brands (boand_name)
+VALUES 
+('Acer'),('HUAWEI'),('HP'),('BenQ'),('LG'),('Apple'),('Lenovo'),('MSI'),('OPPO'),('Xiaomi'),('Asus'),('Samsung');
 
 -- 插入產品類別
 INSERT INTO Categories (category_name, description)
