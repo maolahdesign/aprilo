@@ -87,6 +87,7 @@ VALUES
 (N'MSI Modern 14', 1, 21900.00, 8, N'14吋FHD/i5-1135G7/8G/512G PCIe SSD'),
 (N'Apple MacBook Air M2', 1, 39900.00, 12, N'13.6吋/M2晶片/8G/256G SSD'),
 
+
 -- 智慧型手機
 (N'Apple iPhone 14', 2, 27900.00, 20, N'6.1吋/A15晶片/128G儲存空間'),
 (N'Samsung Galaxy S23', 2, 25900.00, 15, N'6.1吋/高通驍龍8 Gen2/8G/256G'),
