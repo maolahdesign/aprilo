@@ -277,27 +277,10 @@ group by category_id
 
 
 -- apple 在每個分類各有多少產品
--- select category_id,brand_id
--- from products
-
--- select category_id,brand_id
--- from products
--- where brand_id=6
-
--- select category_id,brand_id
--- from products
--- group by category_id,brand_id
--- where brand_id=6
-
--- select category_id,brand_id,count(*) -- count(*) 計算重複發生次數
--- from products
--- group by category_id,brand_id
--- having brand_id=6
-
--- select category_id,brand_id,count(*)
--- from products
--- group by brand_id ,category_id 
--- having brand_id = 6
+select category_id,brand_id,count(*)
+from products
+group by brand_id ,category_id 
+having brand_id = 6
 
 -- 哪幾個品牌手機有一支以上的選擇
 -- 1.列出所有的手機產品
