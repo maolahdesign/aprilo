@@ -230,3 +230,161 @@ SELECT * FROM products where product_name like '__e%';
 
 -- 筆電有哪些選擇?不要14吋的
 SELECT * FROM products where category_id = 1 and product_name like '%[^4]'
+
+-- 找出 2023-4-1 到 2024-7-1 期間上架的商品
+SELECT * FROM products where created_at between '2023-4-1' and '2024-7-1'
+
+-- 預算 20000 到 26000 的手機有哪些選擇
+SELECT * FROM products where category_id = 2 and price between 20000 and 26000
+
+-- 我想買手機跟桌上型電腦，有哪些建議?
+SELECT * FROM products where category_id in (2,4)
+
+-- 我想買十台電腦，預算不能超過25萬，有哪些推薦?
+SELECT * FROM products where category_id in (1,4) and (price*10)<250000
+
+-- 總共有多少電腦商品
+SELECT count(*) FROM products where category_id in (1,4)
+
+-- 總共有幾個產品分類
+SELECT count(distinct category_id)  FROM products
+
+-- 平板電腦平均售價是多少
+SELECT AVG(price) as 平均售價 FROM products where category_id in (2)
+
+-- 最貴的平板電腦跟最便宜的差多少錢
+SELECT max(price)-min(price) as 差價 FROM products where category_id in (2)
+
+-- 全部的筆電都買掉總收入是多少
+SELECT sum(price * stock) FROM products where category_id=1
+
+-- 各分類產品總金額是多少
+SELECT sum(price * stock) FROM products group by category_id
+
+-- 計算各分類產品總數
+SELECT category_id,count(*) FROM products group by category_id 
+
+
+-- 為每個分類建立群組
+select category_id as 分類
+from products
+group by category_id 
+
+-- 計算每個群組內有多少產品
+select category_id as 分類,count(*) as 數量
+from products
+group by category_id 
+
+
+-- apple 在每個分類各有多少產品
+-- select category_id,brand_id
+-- from products
+
+-- select category_id,brand_id
+-- from products
+-- where brand_id=6
+
+-- select category_id,brand_id
+-- from products
+-- group by category_id,brand_id
+-- where brand_id=6
+
+-- select category_id,brand_id,count(*) -- count(*) 計算重複發生次數
+-- from products
+-- group by category_id,brand_id
+-- having brand_id=6
+
+-- select category_id,brand_id,count(*)
+-- from products
+-- group by brand_id ,category_id 
+-- having brand_id = 6
+
+-- 哪幾個品牌手機有一支以上的選擇
+-- 1.列出所有的手機產品
+select brand_id
+from products
+where category_id = 2
+
+-- 2.為每個手機品牌建立群組
+select brand_id
+from products
+where category_id = 2
+group by brand_id  -- 建立群組
+
+-- 3.加入每個品牌手機數量計算
+select brand_id,count(*) as 數量 -- 手機數量計算
+from products
+where category_id = 2
+group by brand_id  
+
+-- 4.加入限制條件
+select brand_id,count(*)
+from products
+where category_id = 2
+group by brand_id  
+having count(*)>1 --一支以上選擇
+
+-- 各分類的各品牌庫存及合計庫存
+SELECT 
+    brand_id, 
+    category_id, 
+    SUM(stock) AS TotalStock
+FROM products
+GROUP BY category_id, brand_id
+WITH ROLLUP;
+
+--各品牌的各產品庫存
+SELECT 
+    brand_id, 
+    category_id, 
+    SUM(stock) AS TotalStock
+FROM products
+GROUP BY brand_id,category_id
+WITH ROLLUP;
+
+SELECT 
+    brand_id, 
+    category_id, 
+    SUM(stock) AS TotalStock
+FROM products
+GROUP BY GROUPING SETS (
+    (brand_id, category_id),  -- 原始分組
+    (brand_id),               -- brand_id 小計
+    ()                        -- 總計
+);
+
+
+
+-- 查詢所有產品(產品編號，產品名稱，產品類別，價格，庫存)
+SELECT p.product_id, p.product_name, c.category_name, p.price, p.stock 
+FROM Products p
+JOIN Categories c ON p.category_id = c.category_id;
+
+-- 查詢所有訂單及總金額(訂單編號，客戶名稱，業務員，訂單日期，總數量，訂單狀態)
+SELECT o.order_id, c.name AS customer_name, e.name AS employee_name, 
+       o.order_date, o.total_amount, o.status
+FROM Orders o
+JOIN Customers c ON o.customer_id = c.customer_id
+JOIN Employees e ON o.employee_id = e.employee_id;
+
+-- 查詢訂單明細(訂單編號，產品名稱，數量 quantity，單價 unit_price，小計 subtota)
+SELECT od.order_id, p.product_name, od.quantity, od.unit_price, od.subtotal
+FROM OrderDetails od
+JOIN Products p ON od.product_id = p.product_id
+ORDER BY od.order_id;
+
+-- 計算每個產品類別的銷售總額(產品類別，銷售總額)
+SELECT c.category_name, SUM(od.subtotal) AS total_sales
+FROM OrderDetails od
+JOIN Products p ON od.product_id = p.product_id
+JOIN Categories c ON p.category_id = c.category_id
+GROUP BY c.category_name
+ORDER BY total_sales DESC;
+
+-- 查找最暢銷的產品前五名(產品名稱，總數量，銷售總額)
+SELECT TOP 5 p.product_name, SUM(od.quantity) AS total_quantity, 
+       SUM(od.subtotal) AS total_sales
+FROM OrderDetails od
+JOIN Products p ON od.product_id = p.product_id
+GROUP BY p.product_name
+ORDER BY total_quantity DESC;
