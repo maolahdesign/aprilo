@@ -32,11 +32,13 @@ JOIN Categories c ON p.category_id = c.category_id;
 
 ```sql
 -- 熱銷產品索引檢視表
-CREATE VIEW vw_PopularProducts WITH SCHEMABINDING AS
+CREATE VIEW vw_PopularProducts 
+WITH SCHEMABINDING AS
 SELECT 
     p.product_id,
     p.product_name,
-    SUM(od.quantity) AS total_sold
+    SUM(od.quantity) AS total_sold,
+	COUNT_BIG(*) AS row_count
 FROM dbo.Products p
 JOIN dbo.OrderDetails od ON p.product_id = od.product_id
 GROUP BY p.product_id, p.product_name;
@@ -164,8 +166,9 @@ SELECT
     stock,
     price
 FROM Products
-WHERE stock <= 10
-ORDER BY stock ASC;
+WHERE stock <= 10;
+
+select * from vw_LowStockAlert ORDER BY stock ASC;
 ```
 
 ### 3. 客戶訂單歷史檢視表
