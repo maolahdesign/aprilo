@@ -1,0 +1,87 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- 時間軸 -->
+  <line x1="50" y1="350" x2="750" y2="350" stroke="black" stroke-width="2"/>
+  
+  <!-- 時間標記 -->
+  <g font-family="Arial" font-size="12">
+    <text x="50" y="370" text-anchor="middle">00:00</text>
+    <line x1="50" y1="345" x2="50" y2="355" stroke="black"/>
+    
+    <text x="150" y="370" text-anchor="middle">06:00</text>
+    <line x1="150" y1="345" x2="150" y2="355" stroke="black"/>
+    
+    <text x="250" y="370" text-anchor="middle">12:00</text>
+    <line x1="250" y1="345" x2="250" y2="355" stroke="black"/>
+    
+    <text x="350" y="370" text-anchor="middle">18:00</text>
+    <line x1="350" y1="345" x2="350" y2="355" stroke="black"/>
+    
+    <text x="450" y="370" text-anchor="middle">24:00</text>
+    <line x1="450" y1="345" x2="450" y2="355" stroke="black"/>
+    
+    <text x="550" y="370" text-anchor="middle">30:00</text>
+    <line x1="550" y1="345" x2="550" y2="355" stroke="black"/>
+    
+    <text x="650" y="370" text-anchor="middle">36:00</text>
+    <line x1="650" y1="345" x2="650" y2="355" stroke="black"/>
+  </g>
+  
+  <!-- 完整備份 -->
+  <rect x="50" y="50" width="200" height="30" fill="#4CAF50" opacity="0.7"/>
+  <text x="150" y="70" font-family="Arial" font-size="12" text-anchor="middle" fill="white">完整備份</text>
+  
+  <rect x="450" y="50" width="200" height="30" fill="#4CAF50" opacity="0.7"/>
+  <text x="550" y="70" font-family="Arial" font-size="12" text-anchor="middle" fill="white">完整備份</text>
+  
+  <!-- 差異備份 -->
+  <rect x="150" y="100" width="40" height="20" fill="#2196F3" opacity="0.7"/>
+  <text x="170" y="115" font-family="Arial" font-size="10" text-anchor="middle" fill="white">差異</text>
+  
+  <rect x="250" y="100" width="40" height="20" fill="#2196F3" opacity="0.7"/>
+  <text x="270" y="115" font-family="Arial" font-size="10" text-anchor="middle" fill="white">差異</text>
+  
+  <rect x="350" y="100" width="40" height="20" fill="#2196F3" opacity="0.7"/>
+  <text x="370" y="115" font-family="Arial" font-size="10" text-anchor="middle" fill="white">差異</text>
+  
+  <rect x="550" y="100" width="40" height="20" fill="#2196F3" opacity="0.7"/>
+  <text x="570" y="115" font-family="Arial" font-size="10" text-anchor="middle" fill="white">差異</text>
+  
+  <!-- 交易日誌備份 -->
+  <rect x="100" y="140" width="20" height="15" fill="#FF9800" opacity="0.7"/>
+  <text x="110" y="152" font-family="Arial" font-size="8" text-anchor="middle" fill="white">日誌</text>
+  
+  <rect x="200" y="140" width="20" height="15" fill="#FF9800" opacity="0.7"/>
+  <text x="210" y="152" font-family="Arial" font-size="8" text-anchor="middle" fill="white">日誌</text>
+  
+  <rect x="300" y="140" width="20" height="15" fill="#FF9800" opacity="0.7"/>
+  <text x="310" y="152" font-family="Arial" font-size="8" text-anchor="middle" fill="white">日誌</text>
+  
+  <rect x="400" y="140" width="20" height="15" fill="#FF9800" opacity="0.7"/>
+  <text x="410" y="152" font-family="Arial" font-size="8" text-anchor="middle" fill="white">日誌</text>
+  
+  <rect x="500" y="140" width="20" height="15" fill="#FF9800" opacity="0.7"/>
+  <text x="510" y="152" font-family="Arial" font-size="8" text-anchor="middle" fill="white">日誌</text>
+  
+  <rect x="600" y="140" width="20" height="15" fill="#FF9800" opacity="0.7"/>
+  <text x="610" y="152" font-family="Arial" font-size="8" text-anchor="middle" fill="white">日誌</text>
+  
+  <!-- 系統事件 -->
+  <rect x="50" y="200" width="380" height="30" fill="#8BC34A" opacity="0.7"/>
+  <text x="240" y="220" font-family="Arial" font-size="12" text-anchor="middle">系統正常運行</text>
+  
+  <rect x="430" y="200" width="40" height="30" fill="#F44336" opacity="0.7"/>
+  <text x="450" y="220" font-family="Arial" font-size="12" text-anchor="middle" fill="white">故障</text>
+  
+  <rect x="450" y="200" width="100" height="30" fill="#03A9F4" opacity="0.7"/>
+  <text x="500" y="220" font-family="Arial" font-size="12" text-anchor="middle" fill="white">復原過程</text>
+  
+  <rect x="550" y="200" width="100" height="30" fill="#8BC34A" opacity="0.7"/>
+  <text x="600" y="220" font-family="Arial" font-size="12" text-anchor="middle">系統恢復運行</text>
+  
+  <!-- 復原路徑 -->
+  <path d="M 50,250 L 50,280 L 350,280 L 350,310 L 400,310" stroke="#F44336" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+  <text x="200" y="275" font-family="Arial" font-size="12" text-anchor="middle" fill="#F44336">復原路徑</text>
+  
+  <!-- 標題 -->
+  <text x="400" y="30" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle">SQL Server 備份與還原時間線</text>
+</svg>
