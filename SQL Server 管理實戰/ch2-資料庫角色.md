@@ -1,86 +1,73 @@
-# SQL Server 2022 資料庫角色（database role）成員資格的完整說明：
+# SQL Server 伺服器角色與資料庫角色類型說明
 
----
+## 伺服器角色 (Server Roles)
 
-## 一、什麼是資料庫角色（Database Role）
+| 角色名稱 | 說明 | 主要權限 |
+|---------|------|---------|
+| sysadmin | 系統管理員 | 可在 SQL Server 執行個體上執行任何活動，最高權限角色 |
+| serveradmin | 伺服器管理員 | 可變更伺服器範圍組態選項和關閉伺服器 |
+| securityadmin | 安全性管理員 | 管理登入帳戶、密碼政策和讀取錯誤記錄 |
+| processadmin | 處理程序管理員 | 可結束 SQL Server 執行個體中執行的處理程序 |
+| setupadmin | 安裝管理員 | 可新增和移除連結的伺服器及執行某些系統預存程序 |
+| bulkadmin | 大量匯入管理員 | 可執行 BULK INSERT 陳述式 |
+| diskadmin | 磁碟管理員 | 管理磁碟檔案 |
+| dbcreator | 資料庫建立者 | 可建立、修改、刪除和還原任何資料庫 |
+| public | 公用角色 | 每個 SQL Server 登入都屬於 public 角色，無法移除 |
 
-資料庫角色是 SQL Server 中用來**集中管理資料庫層級權限**的安全主體（security principal），類似 Windows 的群組。你可以將多個使用者加入同一角色，並針對角色授權，讓權限管理更簡單一致。
+## 資料庫角色 (Database Roles)
 
----
+| 角色名稱 | 說明 | 主要權限 |
+|---------|------|---------|
+| db_owner | 資料庫擁有者 | 可執行資料庫內的所有組態與維護活動 |
+| db_securityadmin | 安全性管理員 | 可管理資料庫中的角色成員資格和權限 |
+| db_accessadmin | 存取管理員 | 可新增或移除使用者對資料庫的存取權 |
+| db_backupoperator | 備份操作員 | 可備份資料庫 |
+| db_ddladmin | DDL 管理員 | 可在資料庫中執行任何 DDL 操作 |
+| db_datawriter | 資料寫入者 | 可在所有使用者資料表中新增、刪除或變更資料 |
+| db_datareader | 資料讀取者 | 可從所有使用者資料表讀取資料 |
+| db_denydatawriter | 拒絕資料寫入者 | 不能新增、修改或刪除資料表中的資料 |
+| db_denydatareader | 拒絕資料讀取者 | 不能讀取使用者資料表中的資料 |
+| public | 資料庫公用角色 | 每個資料庫使用者都屬於此角色，無法移除 |
 
-## 二、資料庫角色的種類
+## 特殊用途的資料庫角色
 
-### 1. **固定資料庫角色（Fixed Database Roles）**
-這些角色在每個資料庫中都預先定義，無法刪除，且其權限不可更改（除了 public 角色）。常見角色如下：
+| 角色名稱 | 資料庫 | 說明 |
+|---------|------|------|
+| db_ssisadmin | msdb | 管理 SSIS 套件 |
+| db_ssisltduser | msdb | 可檢視和執行 SSIS 套件但不能修改 |
+| db_ssisoperator | msdb | 可列出和執行 SSIS 套件 |
+| db_dlcadmin | msdb | 數據收集集管理員 |
+| db_dlcuser | msdb | 數據收集集使用者 |
+| db_dlcreader | msdb | 數據收集集讀取者 |
+| dbm_monitor | msdb | 資料庫鏡像監視器 |
+| SQLAgentOperatorRole | msdb | SQL Server Agent 操作員角色 |
+| SQLAgentReaderRole | msdb | SQL Server Agent 讀取者角色 |
+| SQLAgentUserRole | msdb | SQL Server Agent 使用者角色 |
+| TargetServersRole | msdb | 可管理主伺服器和目標伺服器 |
+| PolicyAdministratorRole | msdb | 原則型管理管理員 |
 
-| 角色名稱             | 說明                                                                                 |
-|----------------------|--------------------------------------------------------------------------------------|
-| db_owner             | 擁有資料庫內所有權限，可進行所有設定、維護與刪除資料庫。                             |
-| db_securityadmin     | 可管理自訂角色成員資格與權限，具潛在權限提升風險，需加強監控。                       |
-| db_accessadmin       | 可新增或移除 Windows 登入、群組及 SQL Server 登入對資料庫的存取權限。                |
-| db_backupoperator    | 可執行資料庫備份。                                                                   |
-| db_ddladmin          | 可執行任何 DDL（資料定義語言）指令，如建立、修改資料表等。                           |
-| db_datawriter        | 可新增、修改、刪除所有使用者資料表的資料。                                           |
-| db_datareader        | 可讀取所有使用者資料表與檢視表的資料。                                               |
-| db_denydatawriter    | 不可新增、修改、刪除任何使用者資料表的資料。                                         |
-| db_denydatareader    | 不可讀取任何使用者資料表與檢視表的資料。                                             |
-| public               | 所有使用者預設皆屬於 public 角色，僅具備最基本的存取權限。                           |
+## 使用者自訂角色 (User-Defined Roles)
 
-> 除 public 外，這些角色的權限無法更改。db_owner 可管理其他角色的成員資格。
+| 角色類型 | 說明 | 建立方式 |
+|---------|------|---------|
+| 伺服器層級自訂角色 | SQL Server 2014 及更新版本支援 | `CREATE SERVER ROLE role_name [AUTHORIZATION server_principal]` |
+| 資料庫層級自訂角色 | 可根據業務需求自訂 | `CREATE ROLE role_name [AUTHORIZATION database_principal]` |
+| 應用程式角色 | 提供應用程式特定的權限 | `CREATE APPLICATION ROLE role_name WITH PASSWORD = 'password' [, DEFAULT_SCHEMA = schema_name]` |
 
-### 2. **自訂資料庫角色（User-Defined Database Roles）**
-- 管理員可依需求自訂角色，並用 `GRANT`、`DENY`、`REVOKE` 指令調整權限。
-- 適合細緻化權限控管與分工。
+## 角色繼承與關係
 
----
+| 角色關係 | 說明 | 範例 |
+|---------|------|------|
+| 巢狀角色 | 角色可以是其他角色的成員 | 開發團隊角色可包含在專案管理角色中 |
+| 權限衝突 | DENY 權限優先於 GRANT 權限 | 若 DENY SELECT 給角色 A，即使 GRANT SELECT 給角色 B，且使用者同時屬於這兩個角色，使用者也無法執行 SELECT |
+| 角色繼承 | 加入角色的成員繼承該角色的所有權限 | 加入 db_datareader 的使用者自動擁有所有表的讀取權限 |
 
-## 三、角色成員資格管理
+## 角色管理最佳實踐
 
-- **新增成員：**
-  ```sql
-  ALTER ROLE db_datareader ADD MEMBER Troie;
-  ```
-- **移除成員：**
-  ```sql
-  ALTER ROLE db_datareader DROP MEMBER Troie;
-  ```
-- 可將任何資料庫帳號或其他資料庫角色加入角色，但**不建議將自訂角色加入固定角色**，避免權限意外擴大。
-
----
-
-## 四、查詢角色成員資格
-
-查詢所有資料庫角色及其成員：
-```sql
-SELECT roles.principal_id AS RolePrincipalID,
-       roles.name AS RolePrincipalName,
-       database_role_members.member_principal_id AS MemberPrincipalID,
-       members.name AS MemberPrincipalName
-FROM sys.database_role_members AS database_role_members
-INNER JOIN sys.database_principals AS roles
-    ON database_role_members.role_principal_id = roles.principal_id
-INNER JOIN sys.database_principals AS members
-    ON database_role_members.member_principal_id = members.principal_id;
-```
-
----
-
-## 五、注意事項
-
-- **資料庫角色只適用於單一資料庫範圍**，無法授與伺服器層級權限。
-- **登入（Login）與伺服器角色（Server Role）** 屬於伺服器層級，無法直接加入資料庫角色。
-- **public 角色**：所有資料庫使用者預設皆屬於 public，無法移除。
-- 權限管理建議：盡量以角色為單位授權，減少直接對使用者授權，方便維護與稽核。
-
----
-
-## 六、常見應用範例
-
-- **給資料分析師只讀權限：**
-  ```sql
-  ALTER ROLE db_datareader ADD MEMBER analyst_user;
-  ```
-- **給開發人員可寫入資料但不可刪除權限：**
-  - 先加入 db_datawriter，再用 DENY 禁止 DELETE 權限。
-
----
+| 最佳實踐 | 說明 | 範例 |
+|---------|------|------|
+| 最小權限原則 | 僅授與完成工作所需的最小權限 | 為報表使用者僅提供 db_datareader 角色 |
+| 使用自訂角色 | 為特定業務需求建立自訂角色 | `CREATE ROLE Sales_Manager` |
+| 避免直接授與權限 | 優先通過角色管理權限而非直接授與使用者 | 將使用者加入適當角色，而非直接授與表格權限 |
+| 定期審核 | 定期檢查角色成員和權限 | 使用系統視圖如 `sys.server_role_members` 審核角色成員 |
+| 分離權責 | 避免單一角色擁有過多權限 | 將資料修改和管理權限分配給不同角色 |
