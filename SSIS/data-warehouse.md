@@ -136,7 +136,6 @@ OLTP（線上交易處理）與 OLAP（線上分析處理）是資料庫系統�
 - **中繼資料平台**：Apache Atlas（Hadoop生態系）、Alation（企業級資料目錄）。
 - **自動化文件**：Dataedo自動生成資料庫文件與ER圖。
 
----
 
 ## 資料倉儲組件架構
 ### 1. 載入管理器（Load Manager）
@@ -378,24 +377,10 @@ CREATE TABLE FactSales (
 ### 挑戰
 1. **建置成本**：需要硬體（例如 NVMe SSD，參考前文 1TB 備份）、ETL 設計和維護。
 2. **更新延遲**：批次更新不適合即時需求（例如 `Electronics3CStore` 的即時訂單）。
-3. **複雜性**：星型模型和 SSIS 封裝設計需要專業知識（參考前文課程模組 3、6）。
+3. **複雜性**：星型模型和 SSIS 封裝設計需要專業知識。
 
----
 
-## 附錄：視覺化解說圖（Mermaid 程式碼）
 
-以下為視覺化圖表的 Mermaid 程式碼，可用於生成流程圖和模型圖（需支援 Mermaid 的工具，例如 GitHub 或 VS Code）。
-
-### 圖 1：資料倉儲 vs. OLTP
-```mermaid
-graph TD
-    A[資料倉儲<br>分析、報表<br>星型模型<br>歷史數據] -->|查詢優化| B[Power BI<br>SSAS]
-    C[交易型資料庫 (OLTP)<br>即時交易<br>正規化表格<br>當前數據] -->|寫入優化| D[Electronics3CStore<br>Sales.Orders]
-    A -->|ETL| E[SSIS]
-    C -->|ETL| E
-```
-
-### 圖 2：ETL 流程
 ```mermaid
 graph LR
     A[來源<br>Electronics3CStore<br>CSV, API] -->|提取| B[SSIS<br>清洗、轉換]
