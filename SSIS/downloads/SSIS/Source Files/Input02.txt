@@ -1,0 +1,16 @@
+CustomerID	NameStyle	Title	FirstName	LastName	CompanyName	SalesPerson	EmailAddress	Phone
+20	0	Ms.	Jean	Handley	Central Discount Store	adventure-works\david8	jean1@adventure-works.com	582-555-0113
+21	0	NULL	Jinghao	Liu	Chic Department Stores	adventure-works\jillian0	jinghao1@adventure-works.com	928-555-0116
+22	0	Ms.	Linda	Burnett	Travel Systems	adventure-works\jillian0	linda4@adventure-works.com	121-555-0121
+23	0	Mr.	Kerim	Hanif	Bike World	adventure-works\shu0	kerim0@adventure-works.com	216-555-0122
+24	0	Mr.	Kevin	Liu	Eastside Department Store	adventure-works\linda3	kevin5@adventure-works.com	926-555-0164
+25	0	Mr.	Donald	Blanton	Coalition Bike Company	adventure-works\shu0	donald0@adventure-works.com	357-555-0161
+28	0	Ms.	Jackie	Blackwell	Commuter Bicycle Store	adventure-works\jos‚1	jackie0@adventure-works.com	972-555-0163
+29	0	Mr.	Bryan	Hamilton	Cross-Country Riding Supplies	adventure-works\jos‚1	bryan2@adventure-works.com	344-555-0144
+30	0	Mr.	Todd	Logan	Cycle Merchants	adventure-works\garrett1	todd0@adventure-works.com	783-555-0110
+34	0	Ms.	Barbara	German	Cycles Wholesaler & Mfg.	adventure-works\jae0	barbara4@adventure-works.com	1 (11) 500 555-0181
+37	0	Mr.	Jim	Geist	Two Bike Shops	adventure-works\pamela0	jim1@adventure-works.com	724-555-0161
+38	0	Ms.	Betty	Haines	Finer Mart	adventure-works\david8	betty0@adventure-works.com	867-555-0114
+39	0	Ms.	Sharon	Looney	Fitness Hotel	adventure-works\jillian0	sharon2@adventure-works.com	377-555-0132
+40	0	Mr.	Darren	Gehring	Journey Sporting Goods	adventure-works\jillian0	darren0@adventure-works.com	417-555-0182
+41	0	Ms.	Erin	Hagens	Distant Inn	adventure-works\shu0	erin1@adventure-works.com	244-555-0127

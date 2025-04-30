@@ -1,0 +1,9 @@
+CustomerID	NameStyle	Title	FirstName	LastName	CompanyName	SalesPerson	EmailAddress	Phone
+6	0	Ms.	Rosmarie	Carroll	Aerobic Exercise Company	adventure-works\linda3	rosmarie0@adventure-works.com	244-555-0112
+7	0	Mr.	Dominic	Gash	Associated Bikes	adventure-works\shu0	dominic0@adventure-works.com	192-555-0173
+10	0	Ms.	Kathleen	Garza	Rural Cycle Emporium	adventure-works\jos‚1	kathleen0@adventure-works.com	150-555-0127
+11	0	Ms.	Katherine	Harding	Sharp Bikes	adventure-works\jos‚1	katherine0@adventure-works.com	926-555-0159
+12	0	Mr.	Johnny	Caprio	Bikes and Motorbikes	adventure-works\garrett1	johnny0@adventure-works.com	112-555-0191
+16	0	Mr.	Christopher	Beck	Bulk Discount Store	adventure-works\jae0	christopher1@adventure-works.com	1 (11) 500 555-0132
+18	0	Mr.	David	Liu	Catalog Store	adventure-works\michael9	david20@adventure-works.com	440-555-0132
+19	0	Mr.	John	Beaver	Center Cycle Shop	adventure-works\pamela0	john8@adventure-works.com	521-555-0195

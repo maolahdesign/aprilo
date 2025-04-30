@@ -1,0 +1,20 @@
+AddressID	AddressLine1	AddressLine2	City	StateProvince	CountryRegion	PostalCode
+455	2550 Signet Drive	NULL	Weston	Ontario	Canada	M9V 4W3
+456	6777 Kingsway	NULL	Burnaby	British Columbia	Canada	V5H 3Z7
+457	5250-505 Burning St	NULL	Vancouver	British Columbia	Canada	V7L 4J4
+458	600 Slater Street	NULL	Ottawa	Ontario	Canada	K4B 1S2
+459	25575 The Queensway	NULL	Etobicoke	Ontario	Canada	M9W 3P3
+460	2521 McPherson Street	NULL	Markham	Ontario	Canada	L3S 3K2
+461	2560 Bay Street	NULL	Toronto	Ontario	Canada	M4B 1V7
+462	630 University Avenue	NULL	Toronto	Ontario	Canada	M4B 1V7
+463	992 St Clair Ave East	NULL	Toronto	Ontario	Canada	M4B 1V7
+464	"99, Rue Saint-pierre"	NULL	Pnot-Rouge	Quebec	Canada	J1E 2T7
+465	25245 Rue Sherbrooke Ouest	NULL	Montreal	Quebec	Canada	H1Y 2H5
+466	655-4th Ave S.W.	NULL	Calgary	Alberta	Canada	T2P 2G8
+467	25900-700-9th Ave S.W.	NULL	Calgary	Alberta	Canada	T2P 2G8
+468	Po Box 83270	NULL	Vancouver	British Columbia	Canada	V7L 4J4
+469	400-25155 West Pender St	NULL	Vancouver	British Columbia	Canada	V7L 4J4
+470	2511 Baker Road	NULL	Toronto	Ontario	Canada	M4B 1V7
+471	770 Notre Datme Quest Bureau 800	NULL	Montreal	Quebec	Canada	H1Y 2H7
+472	250551 Shellbridge Way	NULL	Richmond	British Columbia	Canada	V6B 3P7
+473	595 Burning Street	NULL	Vancouver	British Columbia	Canada	V7L 4J4

@@ -1,0 +1,18 @@
+AddressID	AddressLine1	AddressLine2	City	StateProvince	CountryRegion	PostalCode
+9	8713 Yosemite Ct.	NULL	Bothell	Washington	United States	98011
+11	1318 Lasalle Street	NULL	Bothell	Washington	United States	98011
+25	9178 Jumping St.	NULL	Dallas	Texas	United States	75201
+28	9228 Via Del Sol	NULL	Phoenix	Arizona	United States	85004
+32	26910 Indela Road	NULL	Montreal	Quebec	Canada	H1Y 2H5
+185	2681 Eagle Peak	NULL	Bellevue	Washington	United States	98004
+297	7943 Walnut Ave	NULL	Renton	Washington	United States	98055
+445	6388 Lake City Way	NULL	Burnaby	British Columbia	Canada	V5A 3A6
+446	52560 Free Street	NULL	Toronto	Ontario	Canada	M4B 1V7
+447	22580 Free Street	NULL	Toronto	Ontario	Canada	M4B 1V7
+448	2575 Bloor Street East	NULL	Toronto	Ontario	Canada	M4B 1V6
+449	Station E	NULL	Chalk Riber	Ontario	Canada	K0J 1J0
+450	575 Rue St Amable	NULL	Quebec	Quebec	Canada	G1R
+451	2512-4th Ave Sw	NULL	Calgary	Alberta	Canada	T2P 2G8
+452	55 Lakeshore Blvd East	NULL	Toronto	Ontario	Canada	M4B 1V6
+453	6333 Cote Vertu	NULL	Montreal	Quebec	Canada	H1Y 2H7
+454	3255 Front Street West	NULL	Toronto	Ontario	Canada	M4B 1V6
