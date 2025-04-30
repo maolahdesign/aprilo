@@ -23,8 +23,14 @@ SSIS 是 SQL Server 商業智慧(BI)套件的一部分，與 SQL Server Analysis
 - SSIS的進階設計
 
 ## 建立環境
+- [Visual Studio](https://visualstudio.microsoft.com/zh-hant/downloads/?cid=learn-onpage-download-install-visual-studio-page-cta)
 - [SQL Server Data Tools (SSDT)](https://learn.microsoft.com/zh-tw/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-ver16&tabs=vs2022)
 - [SQL Server Integration Services Projects 2022](https://marketplace.visualstudio.com/items?itemName=SSIS.MicrosoftDataToolsIntegrationServices)
+- Open SSMS
+  1. Create Database SSIS
+  2. open download/ssis/SettingUp.sql
+  3. use SSIS
+  4. exec SettingUp.sql
 
 # SQL Server Integration Services (SSIS) 30小時課程大綱與參考資料
 
