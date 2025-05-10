@@ -1,4 +1,0 @@
-USE 教務系統 
-GO
-ALTER FULLTEXT INDEX ON 員工
-ADD (身份證字號)

@@ -1,6 +1,0 @@
-請使用Python語言和PEP8風格寫一個Python程式，並且加上繁體中文的註解文字，這是使用pymssql模組在SQL Server資料庫下達T-SQL指令，可以顯示查詢結果的記錄資料。T-SQL指令如下所示：
-SELECT 課程編號, 名稱, 學分 FROM 課程 WHERE 學分 >= 3
-連接SQL Server伺服器的連線資訊，如下所示：
-主機是localhost。
-使用者名稱是MyDB，密碼Aa123456。
-資料庫名稱是[教務系統]。

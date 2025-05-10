@@ -1,8 +1,0 @@
-SELECT Qry.query_id,Pl.plan_id,Txt.query_text_id,
-Txt.query_sql_text,OBJECT_NAME(Qry.object_id) AS N'物件名稱',is_forced_plan N'強制執行計畫',force_failure_count N'強制此計畫失敗的次數',last_force_failure_reason_desc as N'強制執行計畫失敗的原因',Qry.last_execution_time as N'上次執行時間'
-FROM sys.query_store_plan AS Pl
-JOIN sys.query_store_query AS Qry
-ON Pl.query_id = Qry.query_id
-JOIN sys.query_store_query_text AS Txt
-ON Qry.query_text_id = Txt.query_text_id
-where is_forced_plan=1;

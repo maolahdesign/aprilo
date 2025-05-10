@@ -1,6 +1,0 @@
-D:\SQLServer\Ch20\Ch20_4\Ch20_4\bin\Debug\Ch20_4.exe
-D:\SQLServer\Ch20\Ch20_4\Ch20_4\bin\Debug\Ch20_4.pdb
-D:\SQLServer\Ch20\Ch20_4\Ch20_4\obj\Debug\Ch20_4.csproj.AssemblyReference.cache
-D:\SQLServer\Ch20\Ch20_4\Ch20_4\obj\Debug\Ch20_4.csproj.CoreCompileInputs.cache
-D:\SQLServer\Ch20\Ch20_4\Ch20_4\obj\Debug\Ch20_4.exe
-D:\SQLServer\Ch20\Ch20_4\Ch20_4\obj\Debug\Ch20_4.pdb

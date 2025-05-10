@@ -1,4 +1,0 @@
-USE 教務系統 
-GO
-INSERT INTO 班級 
-VALUES ('I004', 'S001', 'CS111','03:00:00', '321-M')

@@ -1,4 +1,0 @@
-USE master
-GO
-ALTER DATABASE 代理產品  
-MODIFY FILEGROUP 代理產品_群組 DEFAULT

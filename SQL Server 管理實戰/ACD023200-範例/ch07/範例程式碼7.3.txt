@@ -1,3 +1,0 @@
-select pkg.name, pkg.description, m.description,m.name 
-from  sys.dm_xe_packages pkg 
-	INNER JOIN  sys.dm_os_loaded_modules m  ON m.base_address = pkg.module_address

@@ -1,4 +1,0 @@
-USE 教務系統 
-GO
-DROP FULLTEXT CATALOG 教務_全文檢索目錄
-

@@ -1,3 +1,0 @@
-USE master
-GO
-CREATE DATABASE ¹Ï®Ñ

@@ -1,5 +1,0 @@
-USE AdventureWorks
-GO
-ALTER FULLTEXT INDEX ON Production.Document
-START FULL POPULATION
-

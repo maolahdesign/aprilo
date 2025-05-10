@@ -1,4 +1,0 @@
-USE master
-GO
---利用xp_cmdshell擴充預存程序，執行顯示目錄命令
-EXEC xp_cmdshell 'dir c:\*.*'
