@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 950">
+  <!-- 背景和標題 -->
+  <rect width="800" height="950" fill="#f9f9f9"/>
+  <text x="400" y="40" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">資料模型圖形比較</text>
+
+  <!-- 5. 文件導向模型 -->
+  <rect x="50" y="400" width="700" height="240" fill="#fff8e6" rx="10" ry="10" stroke="#cc7a00" stroke-width="2"/>
+  <text x="400" y="425" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold" fill="#cc7a00">文件導向模型 (Document Model)</text>
+  
+  <!-- MongoDB Document -->
+  <rect x="150" y="445" width="500" height="170" fill="#ffffff" stroke="#cc7a00" stroke-width="1" rx="5" ry="5"/>
+  <text x="170" y="465" font-family="Courier New" font-size="12">{</text>
+  <text x="180" y="480" font-family="Courier New" font-size="12">"_id": "product123",</text>
+  <text x="180" y="495" font-family="Courier New" font-size="12">"name": "智慧手機",</text>
+  <text x="180" y="510" font-family="Courier New" font-size="12">"price": 12000,</text>
+  <text x="180" y="525" font-family="Courier New" font-size="12">"images": ["url1.jpg", "url2.jpg"],</text>
+  <text x="180" y="540" font-family="Courier New" font-size="12">"reviews": [</text>
+  <text x="195" y="555" font-family="Courier New" font-size="12">{ "user": "user1", "rating": 5, "comment": "很好用" },</text>
+  <text x="195" y="570" font-family="Courier New" font-size="12">{ "user": "user2", "rating": 4, "comment": "不錯" }</text>
+  <text x="180" y="585" font-family="Courier New" font-size="12">]</text>
+  <text x="170" y="600" font-family="Courier New" font-size="12">}</text>
+  
+  <!-- 階層指示 -->
+  <path d="M 190 895 L 210 895 L 210 940 L 190 940" fill="none" stroke="#cc7a00" stroke-width="1" opacity="0.5"/>
+  <path d="M 210 940 L 230 940 L 230 985 L 210 985" fill="none" stroke="#cc7a00" stroke-width="1" opacity="0.5"/>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 950">
+  <!-- 背景和標題 -->
+  <rect width="800" height="950" fill="#f9f9f9"/>
+  <text x="400" y="40" font-family="Arial" font-size="24" text-anchor="middle" font-weight="bold">資料模型圖形比較</text>
+
+  <!-- 4. 物件導向模型 -->
+  <rect x="50" y="620" width="700" height="180" fill="#e6ffff" rx="10" ry="10" stroke="#009999" stroke-width="2"/>
+  <text x="400" y="645" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold" fill="#009999">物件導向模型 (Object-Oriented Model)</text>
+  
+  <!-- Student Class -->
+  <rect x="200" y="665" width="400" height="120" fill="#ffffff" stroke="#009999" stroke-width="1"/>
+  <rect x="200" y="665" width="400" height="30" fill="#d9f2f2" stroke="#009999" stroke-width="1"/>
+  <text x="400" y="685" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold">Student Class</text>
+  
+  <!-- 屬性 -->
+  <line x1="200" y1="715" x2="600" y2="715" stroke="#009999" stroke-width="1"/>
+  <text x="210" y="705" font-family="Arial" font-size="12" font-weight="bold">Attributes:</text>
+  <text x="220" y="730" font-family="Arial" font-size="12">- studentId: String</text>
+  <text x="350" y="730" font-family="Arial" font-size="12">- name: String</text>
+  <text x="480" y="730" font-family="Arial" font-size="12">- major: String</text>
+  
+  <!-- 方法 -->
+  <text x="210" y="750" font-family="Arial" font-size="12" font-weight="bold">Methods:</text>
+  <text x="220" y="765" font-family="Arial" font-size="12">+ getGPA(): float</text>
+  <text x="350" y="765" font-family="Arial" font-size="12">+ enrollCourse(courseId): void</text>
+
+  
+</svg>
